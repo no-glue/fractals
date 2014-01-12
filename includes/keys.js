@@ -9,7 +9,7 @@ var KeysFactory = function(chaos, image) {
     root.image = image;
 
     root.onLoad = function() {
-      root.image.draw();
+      root.image.draw(root.chaos);
 
       document.body.addEventListener('keyup', function(event) {
         switch(event.keyCode) {
@@ -18,6 +18,10 @@ var KeysFactory = function(chaos, image) {
             root.image.space();
 
             root.image.draw(root.chaos);
+
+            root.image.doDrawing(chaos, root.image.getMetric());
+
+            root.image.restore(chaos);
 
             break;
           default:
