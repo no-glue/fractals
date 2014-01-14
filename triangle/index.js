@@ -33,9 +33,42 @@ var Image = function(maxDepth) {
 
       chaos.context.fill();
     } else {
+      // top triangle
       chaos.context.save();
 
       chaos.context.translate(Math.cos(angle) * 0.5, Math.sin(angle) * 0.5);
+
+      chaos.context.scale(0.5, 0.5);
+
+      root.doDrawing(chaos, depth - 1);
+
+      chaos.context.restore();
+
+      // right triangle
+      angle + Math.PI * 2 / 3;
+
+      chaos.context.save();
+
+      chaos.context.translate(Math.cos(angle * 0.5), Math.sin(angle * 0.5));
+
+      chaos.context.scale(0.5, 0.5);
+
+      root.doDrawing(chaos, depth - 1);
+
+      chaos.context.restore();
+
+      // left triangle
+      angle += Math.PI * 2 / 3;
+
+      chaos.context.save();
+
+      chaos.context.translate(Math.cos(angle * 0.5), Math.sin(angle * 0.5));
+
+      chaos.context.scale(0.5, 0.5);
+
+      root.doDrawing(chaos, depth - 1);
+
+      chaos.context.restore();
     }
   };
 
@@ -47,3 +80,14 @@ var Image = function(maxDepth) {
     return root.maxDepth;
   };
 };
+
+var chaos = ChaosFactory(
+  document.getElementById('canvas'),
+  window.innerWidth,
+  window.innerHeight
+);
+
+var keys = KeysFactory(
+  chaos,
+  new Image(0)
+);
