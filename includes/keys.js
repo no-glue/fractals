@@ -11,6 +11,10 @@ var KeysFactory = function(chaos, image) {
     root.onLoad = function() {
       root.image.draw(root.chaos);
 
+      root.image.doDrawing(root.chaos, root.image.getMetric());
+
+      root.image.restore(root.chaos);
+
       document.body.addEventListener('keyup', function(event) {
         switch(event.keyCode) {
           case 32:
@@ -19,9 +23,9 @@ var KeysFactory = function(chaos, image) {
 
             root.image.draw(root.chaos);
 
-            root.image.doDrawing(chaos, root.image.getMetric());
+            root.image.doDrawing(root.chaos, root.image.getMetric());
 
-            root.image.restore(chaos);
+            root.image.restore(root.chaos);
 
             break;
           default:

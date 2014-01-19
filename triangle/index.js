@@ -15,17 +15,20 @@ var Image = function(maxDepth) {
     chaos.context.translate(chaos.width * 0.5, chaos.height * 0.6);
 
     chaos.context.scale(chaos.height * 0.5, chaos.height * 0.5);
-
-    chaos.context.restore();
   };
 
   root.doDrawing = function(chaos, depth) {
-    var angle = - Math.PI / 2;
+    var angle = -Math.PI / 2;
 
     if(depth === 0) {
+      // simply do this when pop
       chaos.context.beginPath();
 
       chaos.context.moveTo(Math.cos(angle), Math.sin(angle));
+
+      angle += Math.PI * 2 / 3;
+
+      chaos.context.lineTo(Math.cos(angle), Math.sin(angle));
 
       angle += Math.PI * 2 / 3;
 
@@ -45,11 +48,11 @@ var Image = function(maxDepth) {
       chaos.context.restore();
 
       // right triangle
-      angle + Math.PI * 2 / 3;
+      angle += Math.PI * 2 / 3;
 
       chaos.context.save();
 
-      chaos.context.translate(Math.cos(angle * 0.5), Math.sin(angle * 0.5));
+      chaos.context.translate(Math.cos(angle) * 0.5, Math.sin(angle) * 0.5);
 
       chaos.context.scale(0.5, 0.5);
 
@@ -62,7 +65,7 @@ var Image = function(maxDepth) {
 
       chaos.context.save();
 
-      chaos.context.translate(Math.cos(angle * 0.5), Math.sin(angle * 0.5));
+      chaos.context.translate(Math.cos(angle) * 0.5, Math.sin(angle) * 0.5);
 
       chaos.context.scale(0.5, 0.5);
 

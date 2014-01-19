@@ -6,7 +6,7 @@ var ChaosFactory = function(canvas, width, height) {
 
     root.canvas = canvas;
 
-    root.height = root.canvas.width = width;
+    root.width = root.canvas.width = width;
 
     root.height = root.canvas.height = height;
 
@@ -22,7 +22,7 @@ var ChaosFactory = function(canvas, width, height) {
     // todo, pass root
     root.clear = function(color) {
       if(color) {
-        root.content.fillStyle = color;
+        root.context.fillStyle = color;
 
         root.context.fillRect(0, 0, root.width, root.height);
       } else {
