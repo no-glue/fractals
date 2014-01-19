@@ -76,7 +76,7 @@ var Image = function(maxDepth) {
     chaos.context.restore();
   };
 
-  root.getMetric() {
+  root.getMetric = function() {
     return root.maxDepth;
   };
 };

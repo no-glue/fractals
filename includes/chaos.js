@@ -6,7 +6,7 @@ var ChaosFactory = function(canvas, width, height) {
 
     root.canvas = canvas;
 
-    root.width = root.canvas.width = width;
+    root.height = root.canvas.width = width;
 
     root.height = root.canvas.height = height;
 
