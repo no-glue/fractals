@@ -48,7 +48,7 @@ var Image = function(
 
       chaos.context.rotate(root.angles[i]);
 
-      chaos.context.translate(root.distance, 0);
+      chaos.context.translate(root.distance[i], 0);
 
       // circle size, scaled
       chaos.context.scale(scaleFactor, scaleFactor);
@@ -88,5 +88,6 @@ var chaos = ChaosFactory(
 
 var keys = KeysFactory(
   chaos,
-  new Image(0, 3, [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2], chaos.height / 8, chaos.height / 8 * 2, 0.5)
+  new Image(0, 3, [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2], chaos.height / 8, [3 * Math.random() * chaos.height / 10 + 1, 3 * Math.random() * chaos.height / 10 + 1, 3 * Math.random() * chaos.height / 10 + 1
+], 0.5)
 );
