@@ -46,9 +46,10 @@ var Image = function(
     for(var i = 0; i < root.numShapes; i++) {
       chaos.context.save();
 
-      chaos.context.rotate(root.angles[i]);
+      // avoid self-identity
+      chaos.context.rotate(root.angles[i] + root.maxDepth - depth - .5);
 
-      chaos.context.translate(root.distance[i], 0);
+      chaos.context.translate(root.distance[i] * (root.maxDepth - depth * .5 + 1), 0);
 
       // circle size, scaled
       chaos.context.scale(scaleFactor, scaleFactor);
