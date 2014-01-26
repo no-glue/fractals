@@ -15,6 +15,8 @@ var Image = function(
   root.draw = function(chaos) {
     chaos.clear();
 
+    chaos.context.lineWidth = 2;
+
     chaos.context.save();
 
     // starting drawing place
@@ -64,6 +66,8 @@ var Image = function(
 
       root.doDrawing(chaos, depth - 1, size / 2, root.angles[1]);
     }
+
+    chaos.context.restore();
   };
 
   root.restore = function(chaos) {
