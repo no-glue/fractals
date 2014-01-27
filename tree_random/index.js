@@ -28,12 +28,14 @@ var Image = function(
 
   root.doDrawing = function(chaos, depth, size, angle) {
     if(typeof size === 'undefined') {
-      size = chaos.height * .8;
+      size = chaos.height * .5;
 
       angle = 0;
     }
 
     chaos.context.save();
+
+    chaos.context.strokeStyle = (!depth) ? 'rgba(0, 255, 0, 1)' : 'rgba(0, 0, 0, 1)';
 
     chaos.context.rotate(angle);
 
