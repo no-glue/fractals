@@ -30,6 +30,18 @@ var Image = function(
 
     chaos.context.save();
 
+    var r0 = 104, g0 = 77, b0 = 5, r1 = 82, g1 = 255, b1 = 53, r, g, b, percent;
+
+    percent = (depth) ? depth / root.maxDepth : 0;
+
+    r = Math.floor(r1 + percent * (r0 - r1));
+
+    g = Math.floor(g1 + percent * (g0 - g1));
+
+    b = Math.floor(b1 + percent * (b0 - b1));
+
+    chaos.context.fillStyle = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+
     // draw trunk, a square
     chaos.context.beginPath();
 
@@ -96,5 +108,5 @@ var chaos = ChaosFactory(
 // + rotate left
 var keys = KeysFactory(
   chaos,
-  new Image(0, Math.PI / 4)
+  new Image(0, Math.random() * Math.PI / 4)
 );
