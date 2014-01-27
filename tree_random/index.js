@@ -96,5 +96,5 @@ var chaos = ChaosFactory(
 // + rotate left
 var keys = KeysFactory(
   chaos,
-  new Image(0, [-Math.PI / 3 * Math.random(), Math.PI / 3 * Math.random()], 0.4 + 0.5 * Math.random())
+  new Image(0, [-Math.PI / 3 * Math.random(), Math.PI / 3 * Math.random()], 0.55 + 0.25 * Math.random())
 );
