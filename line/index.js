@@ -2,6 +2,10 @@ var Image = function(
 ) {
   var root = this;
 
+  root.points = [];
+
+  root.offset = 0;
+
   root.space = function() {
   };
 
@@ -10,6 +14,22 @@ var Image = function(
   };
 
   root.doDrawing = function(chaos, depth) {
+    if(!root.points.length) {
+      root.points.push({
+        x: 0,
+        y: chaos.height / 2
+      });
+
+      root.points.push({
+        x: chaos.width,
+        y: chaos.height / 2
+      });
+
+      root.offset = chaos.height / 2;
+    }
+
+    var scaleFactor = 0.5;
+
     var newPoints = [];
 
     for(var i = 0; i < root.points.length - 1; i++) {
@@ -20,6 +40,8 @@ var Image = function(
       newPoint.y += 2 * root.offset * Math.random() - root.offset;
 
       newPoints.push(p0, newPoint);
+
+      console.log('new point>>>', newPoint, p0, p1, i);
     }
 
     newPoints.push(root.points[root.points.length - 1]);
@@ -32,13 +54,15 @@ var Image = function(
 
     chaos.context.beginPath();
 
-    chaos.context.moveTo(points[0].x, points.[0].y);
+    chaos.context.moveTo(root.points[0].x, root.points[0].y);
 
-    for(var i = 1; i < points.length - 1; i++) {
-      chaos.context.lineTo(points[i].x, points[i].y);
+    for(var i = 1; i < root.points.length; i++) {
+      chaos.context.lineTo(root.points[i].x, root.points[i].y);
     }
 
     chaos.context.stroke();
+
+    console.log('points>>>', root.points);
   };
 
   root.restore = function(chaos) {
