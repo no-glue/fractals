@@ -40,15 +40,13 @@ var Image = function(
       newPoint.y += 2 * root.offset * Math.random() - root.offset;
 
       newPoints.push(p0, newPoint);
-
-      console.log('new point>>>', newPoint, p0, p1, i);
     }
 
     newPoints.push(root.points[root.points.length - 1]);
 
     root.points = newPoints;
 
-    root.offset *= root.scaleFactor;
+    root.offset *= scaleFactor;
 
     chaos.context.lineWidth = 2;
 
@@ -61,8 +59,6 @@ var Image = function(
     }
 
     chaos.context.stroke();
-
-    console.log('points>>>', root.points);
   };
 
   root.restore = function(chaos) {
