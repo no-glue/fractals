@@ -10,7 +10,7 @@ var Image = function(
   };
 
   root.draw = function(chaos) {
-    chaos.clear();
+    chaos.clear('#0033cc');
   };
 
   root.doDrawing = function(chaos, depth) {
@@ -27,6 +27,8 @@ var Image = function(
 
       root.offset = chaos.height / 2;
     }
+
+    chaos.context.fillStyle = '#00cc00';
 
     var scaleFactor = 0.5;
 
@@ -58,7 +60,11 @@ var Image = function(
       chaos.context.lineTo(root.points[i].x, root.points[i].y);
     }
 
-    chaos.context.stroke();
+    chaos.context.lineTo(chaos.width, chaos.height);
+
+    chaos.context.lineTo(0, chaos.height);
+
+    chaos.context.fill();
   };
 
   root.restore = function(chaos) {
