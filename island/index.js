@@ -1,6 +1,20 @@
 var Image = function(
+offset,
+scaleFactor,
+initialPoints,
+radius
 ) {
   var root = this;
+
+  root.offset = offset;
+
+  root.scaleFactor = scaleFactor;
+
+  root.initialPoints = initialPoints;
+
+  root.radius = radius;
+
+  root.points = [];
 
   root.space = function() {
   };
@@ -18,7 +32,7 @@ var Image = function(
         });
       }
 
-      root.points.push(points[0]);
+      root.points.push(root.points[0]);
     }
   };
 
@@ -34,7 +48,7 @@ var Image = function(
 
       newPoint.y += Math.random() * root.offset * 2 - root.offset;
 
-      nwPoints.push(p0, newPoint);
+      newPoints.push(p0, newPoint);
     }
 
     newPoints.push(root.points[root.points.length - 1]);
@@ -43,7 +57,7 @@ var Image = function(
 
     root.offset *= root.scaleFactor;
 
-    chaos.contex.save();
+    chaos.context.save();
 
     chaos.context.translate(chaos.width / 2, chaos.height / 2);
 
@@ -81,5 +95,5 @@ var chaos = ChaosFactory(
 // + rotate left
 var keys = KeysFactory(
   chaos,
-  new Image(0, Math.random() * Math.PI / 4)
+  new Image(chaos.height / 6, 0.6, 8, chaos.height / 3)
 );
