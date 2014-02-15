@@ -43,6 +43,28 @@ var Image = function(
         false
       );
 
+      var fill = '';
+
+      var quarter = [0, 2.5, 5, 7.5, 10];
+
+      var y = root.currentPoint.y;
+
+      quarter.push(y);
+
+      quarter.sort();
+
+      for(var i = 0, len = quarter.length; i < len; i++) {
+        if(quarter[i] == y) {
+          var q = (typeof quarter[i + 1] === 'undefined') ? quarter[i] : quarter[i + 1];
+
+          fill = root.colors[q.toString()];
+
+          break;
+        }
+      }
+
+      chaos.context.fillStyle = fill;
+
       chaos.context.fill();
 
       root.setup = !root.setup;
@@ -72,28 +94,23 @@ var Image = function(
 
     root.currentPoint.y = y;
 
-console.log('currentPoint', root.currentPoint);
     var fill = '';
 
-    var quarter = Math.max(y, 0);
+    var quarter = [0, 2.5, 5, 7.5, 10];
 
-    if(quarter == 0) fill = root.colors['0'];
+    quarter.push(y);
 
-    quarter = Math.max(quarter, 2.5);
+    quarter.sort();
 
-    if(quarter == 2.5) fill = root.colors['2.5'];
+    for(var i = 0, len = quarter.length; i < len; i++) {
+      if(quarter[i] == y) {
+        var q = (typeof quarter[i + 1] === 'undefined') ? quarter[i] : quarter[i + 1];
 
-    quarter = Math.max(quarter, 5);
+        fill = root.colors[q.toString()];
 
-    if(quarter == 5) fill = root.colors['5'];
-
-    quarter = Math.max(quarter, 7.5);
-
-    if(quarter == 7.5) fill = root.colors['7.5'];
-
-    quarter = Math.max(quarter, 10);
-
-    if(quarter == 10) fill = root.colors['10'];
+        break;
+      }
+    }
 
     chaos.context.beginPath();
 
