@@ -28,6 +28,20 @@ var KeysFactory = function(chaos, image) {
             root.image.restore(root.chaos);
 
             break;
+          case 187:
+            // +
+            // use this to speed up drawing
+            for(var i = 0; i < 1024; i++) {
+              root.image.space();
+
+              root.image.draw(root.chaos);
+
+              root.image.doDrawing(root.chaos, root.image.getMetric());
+
+              root.image.restore(root.chaos);
+            }
+
+            break;
           default:
             break;
         }

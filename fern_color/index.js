@@ -43,25 +43,7 @@ var Image = function(
         false
       );
 
-      var fill = '';
-
-      var quarter = [0, 2.5, 5, 7.5, 10];
-
-      var y = root.currentPoint.y;
-
-      quarter.push(y);
-
-      quarter.sort();
-
-      for(var i = 0, len = quarter.length; i < len; i++) {
-        if(quarter[i] == y) {
-          var q = (typeof quarter[i + 1] === 'undefined') ? quarter[i] : quarter[i + 1];
-
-          fill = root.colors[q.toString()];
-
-          break;
-        }
-      }
+      var fill = root.colors[Math.ceil(Math.random() * root.colors.length)];
 
       chaos.context.fillStyle = fill;
 
@@ -94,23 +76,7 @@ var Image = function(
 
     root.currentPoint.y = y;
 
-    var fill = '';
-
-    var quarter = [0, 2.5, 5, 7.5, 10];
-
-    quarter.push(y);
-
-    quarter.sort();
-
-    for(var i = 0, len = quarter.length; i < len; i++) {
-      if(quarter[i] == y) {
-        var q = (typeof quarter[i + 1] === 'undefined') ? quarter[i] : quarter[i + 1];
-
-        fill = root.colors[q.toString()];
-
-        break;
-      }
-    }
+    var fill = root.colors[Math.ceil(Math.random() * root.colors.length)];
 
     chaos.context.beginPath();
 
@@ -171,15 +137,15 @@ var keys = KeysFactory(
       y: Math.random() * 2 - 1
     },
     70,
-    0.1,
+    0.01,
     0,
     true,
-    {
-      '0': '#00aa00',
-      '2.5': '#00bb00',
-      '5': '#00cc00',
-      '7.5': '#00dd00',
-      '10': '#00ee00'
-    }
+    [
+      '#00ff00',
+      '#00dd00',
+      '#00aa00',
+      '#007700',
+      '#002200'
+    ]
   )
 );
