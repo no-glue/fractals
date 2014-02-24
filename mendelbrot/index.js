@@ -33,7 +33,8 @@ var Image = function(
     color, 
     index,
     w4 = chaos.width * 4,
-    iData = chaos.context.getImageData(0, 0, chaos.width, chaos.height).data;
+    imageData = chaos.context.getImageData(0, 0, chaos.width, chaos.height),
+    iData = imageData.data;
 
     var w = root.maxR - root.minR, 
     // width on complex plane
@@ -58,6 +59,7 @@ var Image = function(
 
     while(true) {
       x = root.currentX;
+      console.log('x>>>', x);
 
       if(x > chaos.width) break;
 
@@ -97,11 +99,11 @@ var Image = function(
         
           index += w4;
         }
-
-        chaos.context.putImageData(imageData, 0, 0, root.currentX, 0, root.stripWidth, chaos.height);
-
-        root.currentX += root.stripWidth;
       }
+
+      chaos.context.putImageData(imageData, 0, 0, root.currentX, 0, root.stripWidth, chaos.height);
+
+      root.currentX += root.stripWidth;
     }
   };
 
