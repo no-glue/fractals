@@ -1,6 +1,6 @@
 var Image = function(
   currentX,
-  stripeWidth,
+  stripWidth,
   minR,
   maxR,
   minI,
@@ -11,7 +11,7 @@ var Image = function(
 
   root.currentX = currentX;
 
-  root.stripeWidth = stripeWidth;
+  root.stripWidth = stripWidth;
 
   root.minR = minR;
 
@@ -59,8 +59,7 @@ var Image = function(
 
     while(true) {
       x = root.currentX;
-      console.log('x>>>', x);
-
+      
       if(x > chaos.width) break;
 
       // work across the strip horizontally
@@ -75,7 +74,7 @@ var Image = function(
           iter, 
           zr1, 
           zi1, 
-          shade;
+          shade = 0;
 
           for(iter = 0; iter < root.maxIter; iter++) {
             zr1 = zr * zr - zi * zi + cr;
