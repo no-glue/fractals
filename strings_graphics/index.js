@@ -6,7 +6,7 @@ var Image = function(
   root.maxIter = maxIter;
 
   root.space = function() {
-    root.maxIter *= 2;
+    root.maxIter += 1;
   };
 
   root.draw = function(chaos) {
@@ -18,7 +18,7 @@ var Image = function(
     ch = '',
     x = chaos.width * 0.5, 
     y = chaos.height * 0.5, 
-    size = 16, 
+    size = 10, 
     angle = 0, 
     turnAngle = 90;
 
@@ -30,7 +30,9 @@ var Image = function(
       transformedString = '';
 
       for(var transform = 0; transform < seed.length; transform++) {
-        transformedString += ((ch = rules[seed.charAt(transform)])) ? ch : '';
+        ch = rules[seed.charAt(transform)];
+
+        transformedString += (ch) ? ch : seed.charAt(transform);
       }
 
       seed = transformedString;
@@ -86,6 +88,6 @@ var chaos = ChaosFactory(
 var keys = KeysFactory(
   chaos,
   new Image(
-    2
+    1
   )
 );
