@@ -43,8 +43,6 @@ var Image = function(
 
     chaos.context.beginPath();
 
-    console.log('seed>>>', seed);
-
     chaos.context.moveTo(x, y);
 
     for(var at = 0, len = seed.length; at < len; at++) {
